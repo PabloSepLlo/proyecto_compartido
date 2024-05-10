@@ -26,6 +26,11 @@ class cancha:
             else:
                 diccionario[cancha.deporte] += 1
         return diccionario
+    
+    def listar_reservas_cancha(self):
+        for reserva in range(len(self.lista_reservas)):
+            print(f"La cancha con numero {self.num_cancha} tiene el numero de identificacion {self.lista_reservas[reserva].num_reserva} 
+            con fecha {self.lista_reservas[reserva].num_reserva}")
                 
     def quitar_cancha(self, lista_centro):
         if not self.lista_reservas:
