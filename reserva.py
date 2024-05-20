@@ -1,7 +1,7 @@
 lista_reserva = []
 
 class Reserva:
-    def __init__(self, num_reserva, fecha, cliente, cancha):
+    def _init_(self, num_reserva, fecha, cliente, cancha):
         self.num_reserva = num_reserva
         self.fecha = fecha
         self.cliente = cliente

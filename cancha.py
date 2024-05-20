@@ -1,42 +1,27 @@
-lista_canchas = []
+lista_reserva = []
 
-class cancha:
-    def __init__(self, num_cancha, deporte, precio, habilitada = True, lista_reservas = [], lista_empleados = []):
-        self.num_cancha = num_cancha
-        self.deporte = deporte
-        self.precio = precio
-        self.habilitada = habilitada
-        self.lista_reservas = lista_reservas
-        self.lista_empleados = lista_empleados
-        
-    def añadir_cancha(self):
-        lista_canchas.append(self)
-        
-    def agregar_cancha_a_centro(self, lista_centro):
-        if self not in lista_centro:
-            lista_centro.append(self)
-        else:
-            print("Lo sentimos, pero esa cancha ya está en la lista del centro")
-    
-    def listar_canchas(self):
-        diccionario = {}
-        for cancha in lista_canchas:
-            if cancha not in diccionario:
-                diccionario[cancha.deporte] = 1
-            else:
-                diccionario[cancha.deporte] += 1
-        return diccionario
-    
-    def listar_reservas_cancha(self):
-        for reserva in range(len(self.lista_reservas)):
-            print(f"La cancha con numero {self.num_cancha} tiene el numero de identificacion {self.lista_reservas[reserva].num_reserva} 
-            con fecha {self.lista_reservas[reserva].num_reserva}")
+class Reserva:
+    def _init_(self, num_reserva, fecha, cliente, cancha):
+        self.num_reserva = num_reserva
+        self.fecha = fecha
+        self.cliente = cliente
+        self.cancha = cancha
+            
+    def listar_reservas_cliente(self, cliente):
+        for self in lista_reserva:
+            if cliente in self:
+                print(f"El cliente {cliente.nombre} {cliente.apellido} tiene reservada la cancha {self.cancha} con fecha de {self.fecha}")
                 
-    def quitar_cancha(self, lista_centro):
-        if not self.lista_reservas:
-            lista_centro.remove(self)
-        else:
-            print("No se puede eliminar la cancha porque tiene reservas pendientes")
+    def pagar_cancha(self, cliente, cancha, centro):
+        cancha_pagada = False
+        if (cliente.saldo - cancha.precio) >= -2000:
+            cliente.saldo -= cancha.precio
+            centro.saldo += cancha.precio
+            print(cliente.saldo)
+            cancha_pagada = True
+        else: 
+            print("No hay suficiente saldo para realizar la reser ") 
+        return cancha_pagada
             
             
     
