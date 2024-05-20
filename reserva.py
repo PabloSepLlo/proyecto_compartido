@@ -20,6 +20,5 @@ class Reserva:
             print(cliente.saldo)
             cancha_pagada = True
         else: 
-            print("No hay suficiente saldo para realizar la reserva: ") 
-        return cancha_pagada
+            print("No hay suficiente saldo para realizar la reserva")
         
