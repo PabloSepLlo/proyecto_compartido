@@ -9,6 +9,7 @@ class Centro:
     direccion = ""
     lista_clientes = []
     lista_canchas = []
+    lista_empleados = []
     
     #habría que hacer a lo mejor una lista en clientes también para las reservas que puedan tener
     

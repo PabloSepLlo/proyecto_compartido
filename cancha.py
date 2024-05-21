@@ -13,9 +13,9 @@ class Cancha:
     def __str__(self):
         return f"Cancha: {self.num_cancha}. Deporte: {self.deporte}. Precio: {self.precio}"
 
-    def agregar_cancha_a_centro(self, lista_cancha): #No cambiado
-        if self not in lista_cancha:
-            lista_cancha.append(self)
+    def agregar_cancha_a_centro(self):
+        if self not in Centro.lista_cancha:
+            Centro.lista_cancha.append(self)
         else:
             print("Lo sentimos, pero esa cancha ya está en la lista del centro")
 
