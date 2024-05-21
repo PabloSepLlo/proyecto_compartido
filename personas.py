@@ -1,3 +1,5 @@
+import centro_Pablo
+
 lista_clientes = []
 lista_empleados = []
 
@@ -7,11 +9,12 @@ class Persona:
         self.apellido = apellido
 
 class Clientes(Persona):
-    def __init__(self, nombre, apellido, telefono, identificador, saldo = 0):
+    def __init__(self, nombre, apellido, telefono, identificador, saldo, lista_reservas = []):
         super().__init__(nombre, apellido)
         self.telefono = telefono
         self.identificador = identificador
         self.saldo = saldo
+        self.lista_reservas = lista_reservas
     
     def crear_cliente(self):
         lista_clientes.append(self)

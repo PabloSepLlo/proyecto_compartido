@@ -1,6 +1,7 @@
-lista_canchas = []
+from centro_Pablo import Centro
 
-class cancha:
+class Cancha:
+    
     def __init__(self, num_cancha, deporte, precio, habilitada = True, lista_reservas = [], lista_empleados = []):
         self.num_cancha = num_cancha
         self.deporte = deporte
@@ -8,28 +9,30 @@ class cancha:
         self.habilitada = habilitada
         self.lista_reservas = lista_reservas
         self.lista_empleados = lista_empleados
+        
+    def __str__(self):
+        return f"Cancha: {self.num_cancha}. Deporte: {self.deporte}. Precio: {self.precio}"
 
-    def añadir_cancha(self):
-        lista_canchas.append(self)
-
-    def agregar_cancha_a_centro(self, lista_centro):
-        if self not in lista_centro:
-            lista_centro.append(self)
+    def agregar_cancha_a_centro(self, lista_cancha): #No cambiado
+        if self not in lista_cancha:
+            lista_cancha.append(self)
         else:
             print("Lo sentimos, pero esa cancha ya está en la lista del centro")
 
-    def listar_canchas(self):
-        diccionario = {}
-        for cancha in lista_canchas:
-            if cancha not in diccionario:
-                diccionario[cancha.deporte] = 1
-            else:
-                diccionario[cancha.deporte] += 1
-        return diccionario
+    @staticmethod
+    def listar_canchas_por_deporte(tipo_deporte):
+        canchas_disponibles_para_deporte = False
+        for cancha in Centro.lista_canchas:
+            if cancha.deporte == tipo_deporte:
+                print(cancha)
+                canchas_disponibles_para_deporte = True
+        if canchas_disponibles_para_deporte == False:
+            print(f"No hay canchas disponibles para hacer {tipo_deporte}")
+        
 
-    def quitar_cancha(self, lista_centro):
+    def quitar_cancha(self):#cambiado a Centro.lista_cancha
         if not self.lista_reservas:
-            lista_centro.remove(self)
+            Centro.lista_cancha.remove(self)
         else:
             print("No se puede eliminar la cancha porque tiene reservas pendientes")
             
