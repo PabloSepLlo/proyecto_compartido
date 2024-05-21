@@ -1,5 +1,6 @@
 from cancha import Cancha
-from personas import Clientes, Empleados
+from personas import Clientes
+from personas import Empleados
 from reserva import Reserva
 
 class Centro:

@@ -1,7 +1,4 @@
-import centro_Pablo
-
-lista_clientes = []
-lista_empleados = []
+from centro_Pablo import Centro
 
 class Persona:
     def __init__(self, nombre, apellido):
@@ -15,12 +12,9 @@ class Clientes(Persona):
         self.identificador = identificador
         self.saldo = saldo
         self.lista_reservas = lista_reservas
-    
-    def crear_cliente(self):
-        lista_clientes.append(self)
 
-    def agregar_cliente_lista_centro(self, lista_centro):
-        if self not in lista_centro:
+    def agregar_cliente_lista_centro(self):
+        if self not in Centro.lista_cliente:
             lista_centro.append(self)
         else:
             print("Lo sentimos, pero este cliente ya está en la lista del centro")
