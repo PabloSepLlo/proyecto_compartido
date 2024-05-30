@@ -21,6 +21,14 @@ class Centro2:
         cliente = Clientes(nombre, apellido, telefono, identificador, saldo)
         cliente.agregar_cliente_lista_centro(self.lista_clientes)
         print(f"Cliente {nombre} {apellido} añadido con éxito.")
+        
+    def añadir_empleado(self):
+        nombre = str(input("Escriba su nombre: "))
+        apellido = str(input("Escriba su apellido: "))
+        desocupado = str(input("¿Hay tareas pendientes? "))
+        empleado = Empleados(nombre, apellido, desocupado)
+        empleado.crear_empleado(self.lista_empleados)
+        print(f"El empleado {nombre} {apellido} ha sido contratado.")
 
     def añadir_cancha(self):
         num_cancha = int(input("Escriba el número de la cancha: "))
