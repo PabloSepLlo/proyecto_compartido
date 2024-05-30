@@ -13,11 +13,11 @@ class Reserva:
             if cliente in self:
                 print(f"El cliente {cliente.nombre} {cliente.apellido} tiene reservada la cancha {self.cancha} con fecha de {self.fecha}")
                 
-    def pagar_cancha(self, cliente, cancha, centro):
+    def pagar_cancha(self, cliente, cancha, saldo_centro):
         cancha_pagada = False
         if (cliente.saldo - cancha.precio) >= -2000:
             cliente.saldo -= cancha.precio
-            centro.saldo += cancha.precio
+            saldo_centro += cancha.precio
             print(cliente.saldo)
             cancha_pagada = True
         else: 
