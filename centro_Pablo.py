@@ -15,14 +15,15 @@ class Centro:
     
     #habría que hacer a lo mejor una lista en clientes también para las reservas que puedan tener
     
-    '''def añadir_cliente():
+    def añadir_cliente():
         nombre = str(input("Escriba su nombre: "))
         apellido = str(input("Escriba su apellido: "))
         telefono = int(input("Escriba su telefono: "))
         identificador = int(input("Escriba su identificador: "))
         saldo = int(input("Escriba el dinero que va introducir como saldo inicial: "))
         cliente = Clientes(nombre, apellido, telefono, identificador, saldo) 
-        Clientes.agregar_cliente_lista_centro(cliente, Centro.lista_clientes)'''
+        cliente.agregar_cliente_lista_centro(Centro.lista_clientes)
+        print(f"El cliente {nombre} {apellido} se ha registrado con exito")
     
     def añadir_empleado():
         nombre = str(input("Escriba su nombre: "))
