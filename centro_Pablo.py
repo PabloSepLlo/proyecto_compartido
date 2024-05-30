@@ -37,7 +37,7 @@ class Centro:
         deporte = str(input("Escriba el deporte que se prectica en la cancha: "))
         precio = int(input("Escriba el precio que cuesta usar la cancha: "))
         cancha = Cancha(num_cancha, deporte, precio)
-        Cancha.agregar_cancha_a_centro(cancha, Centro.lista_canchas)
+        cancha.agregar_cancha_a_centro(Centro.lista_canchas)
     
     @staticmethod
     def mostrar_cancha():
@@ -49,6 +49,7 @@ class Centro:
         for indice, cliente in enumerate(Centro.lista_clientes):
             print(f"{indice}: {cliente}")
 
+    @staticmethod
     def mostrar_empleados():
         for indice, empleado in enumerate(Centro.lista_empleados):
             print(f"{indice}: {empleado}")
@@ -57,18 +58,18 @@ class Centro:
     def eliminar_cancha():
         Centro.mostrar_cancha()
         seleccion = int(input("Indique el numero (indice) de la cancha que quiere eliminar: "))
-        Cancha.quitar_cancha(Centro.lista_cancha[seleccion]) #quitada la lista
+        Centro.lista_cancha[seleccion].quitar_cancha(Centro.lista_cancha)
     
     @staticmethod
     def eliminar_cliente():
         Centro.mostrar_cliente()
         seleccion = int(input("Indique el numero (indice) del cliente que quiere eliminar: ")) #no quitada la lista
-        Clientes.quitar_cliente(Centro.lista_clientes[seleccion], Centro.lista_clientes)
+        Centro.lista_clientes[seleccion].quitar_cliente(Centro.lista_clientes)
     
     @staticmethod
     def consultar_disponibilidad_cancha_por_deporte():
         seleccion = str(input("Indique qué deporte quiere practicar para consultar si hay canchas disponibles: "))
-        Cancha.listar_canchas_por_deporte(seleccion)
+        Cancha.listar_canchas_por_deporte(seleccion, Centro.lista_cancha)
     
     @staticmethod
     def reservar_cancha():
@@ -91,15 +92,11 @@ class Centro:
         Centro.mostrar_cliente()
         seleccion = int(input("Indique el numero (indice) del cliente del que quiere consultar las reservas: "))
         print(f"{Centro.lista_clientes[seleccion].nombre} tiene las siguientes reservas: ")
-        for reserva in Centro.lista_clientes[seleccion].lista_reservas:
-            reserva.listar_reservas_cliente(Centro.lista_clientes[seleccion])
+        Reserva.listar_reservas_cliente(Centro.lista_clientes[seleccion], Centro.lista_clientes)
     
+    @staticmethod
     def asignar_tarea_empleado():
         Centro.mostrar_empleados()
         seleccion = int(input("Indique el numero (indice) del empleado al que quiere asignar una tarea: "))
         tarea = str(input("Indique la tarea que quiere asignar: "))
         Centro.lista_empleados[seleccion].agregar_tareas(tarea)
-        
-        
-
-

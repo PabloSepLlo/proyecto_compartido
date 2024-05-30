@@ -13,7 +13,7 @@ class Cancha:
 
     def agregar_cancha_a_centro(self, lista_centro_canchas):
         if self not in lista_centro_canchas:
-            lista_centro_canchas(self)
+            lista_centro_canchas.append(self)
         else:
             print("Lo sentimos, pero esa cancha ya está en la lista del centro")
 

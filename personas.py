@@ -1,5 +1,3 @@
-from centro_Pablo import Centro
-
 class Persona:
     def __init__(self, nombre, apellido):
         self.nombre = nombre
@@ -21,7 +19,7 @@ class Clientes(Persona):
 
     def quitar_cliente(self, lista_centro_clientes):
         if self not in lista_centro_clientes:
-            lista_centro_clientes(self)
+            lista_centro_clientes.remove(self)
         else:
             print("No se puede eliminar el cliente porque tiene reservas hechas")
 

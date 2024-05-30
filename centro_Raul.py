@@ -26,8 +26,7 @@ class Centro2:
         deporte = input("Escriba el deporte que se practica en la cancha: ")
         precio = float(input("Escriba el precio que cuesta usar la cancha: "))
         cancha = Cancha(num_cancha, deporte, precio)
-        cancha.agregar_cancha_a_centro()
-        self.lista_canchas.append(cancha)
+        cancha.agregar_cancha_a_centro(self.lista_canchas)
         print(f"Cancha {num_cancha} añadida con éxito.")
 
     def mostrar_cancha(self):
@@ -38,7 +37,7 @@ class Centro2:
         self.mostrar_cancha()
         seleccion = int(input("Indique el número (índice) de la cancha que quiere eliminar: "))
         cancha_a_eliminar = self.lista_canchas[seleccion]
-        cancha_a_eliminar.quitar_cancha()
+        cancha_a_eliminar.quitar_cancha(self.lista_canchas)
         if cancha_a_eliminar not in self.lista_canchas:
             print("Cancha eliminada con éxito.")
         else:
@@ -51,13 +50,12 @@ class Centro2:
     def eliminar_cliente(self):
         self.mostrar_cliente()
         seleccion = int(input("Indique el número (índice) del cliente que quiere eliminar: "))
-        cliente_a_eliminar = self.lista_clientes.pop(seleccion)
-        Clientes.quitar_cliente(cliente_a_eliminar, self.lista_clientes)
-        print(f"Cliente {cliente_a_eliminar.nombre} {cliente_a_eliminar.apellido} eliminado con éxito.")
+        self.lista_clientes[seleccion].quitar_cliente(self.lista_clientes)
+        print(f"Cliente {self.lista_clientes[seleccion].nombre} {self.lista_clientes[seleccion].apellido} eliminado con éxito.")
 
     def consultar_disponibilidad_cancha_por_deporte(self):
         tipo_deporte = input("Indique qué deporte quiere practicar para consultar si hay canchas disponibles: ")
-        Cancha.listar_canchas_por_deporte(tipo_deporte)
+        Cancha.listar_canchas_por_deporte(tipo_deporte, self.lista_canchas)
 
     def reservar_cancha(self):
         print("CANCHAS:")
