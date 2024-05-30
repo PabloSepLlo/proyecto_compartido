@@ -18,7 +18,7 @@ class Centro2:
         identificador = input("Escriba su identificador: ")
         saldo = float(input("Escriba el dinero que va a introducir como saldo inicial: "))
         cliente = Clientes(nombre, apellido, telefono, identificador, saldo)
-        Clientes.agregar_cliente_lista_centro(cliente, self.lista_clientes)
+        cliente.agregar_cliente_lista_centro(self.lista_clientes)
         print(f"Cliente {nombre} {apellido} añadido con éxito.")
 
     def añadir_cancha(self):

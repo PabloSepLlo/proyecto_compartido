@@ -1,15 +1,13 @@
-from centro_Pablo import Centro
-
 class Reserva:
     
-    def _init_(self, num_reserva, fecha, cliente, cancha):
+    def init(self, num_reserva, fecha, cliente, cancha):
         self.num_reserva = num_reserva
         self.fecha = fecha
         self.cliente = cliente
         self.cancha = cancha
         
-    def listar_reservas_cliente(self, cliente):
-        for self in Centro.lista_reserva:
+    def listar_reservas_cliente(self, cliente, lista_centro_clientes):
+        for self in lista_centro_clientes:
             if cliente in self:
                 print(f"El cliente {cliente.nombre} {cliente.apellido} tiene reservada la cancha {self.cancha} con fecha de {self.fecha}")
                 
