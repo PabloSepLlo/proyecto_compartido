@@ -36,7 +36,8 @@ class Centro:
         num_cancha = int(input("Escriba el numero de la cancha: "))
         deporte = str(input("Escriba el deporte que se prectica en la cancha: "))
         precio = int(input("Escriba el precio que cuesta usar la cancha: "))
-        cancha = Cancha(num_cancha, deporte, precio)
+        habilitada = "True"
+        cancha = Cancha(num_cancha, deporte, precio, habilitada)
         cancha.agregar_cancha_a_centro(Centro.lista_canchas)
     
     @staticmethod

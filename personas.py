@@ -3,6 +3,10 @@ class Persona:
         self.nombre = nombre
         self.apellido = apellido
 
+    def __str__(self):
+        return f"{self.nombre} {self.apellido} "
+        
+
 class Clientes(Persona):
     def __init__(self, nombre, apellido, telefono, identificador, saldo, lista_reservas = []):
         super().__init__(nombre, apellido)
@@ -10,6 +14,9 @@ class Clientes(Persona):
         self.identificador = identificador
         self.saldo = saldo
         self.lista_reservas = lista_reservas
+
+    def __str__(self):
+        return super().__str__() + f"Teléfono: {self.telefono} - ID: {self.identificador} - Saldo: {self.saldo}"
 
     def agregar_cliente_lista_centro(self, lista_centro_clientes):
         if self not in lista_centro_clientes:
@@ -28,11 +35,19 @@ class Clientes(Persona):
             if cliente.saldo <= -2000:
                 print(f"{cliente.nombre} - {cliente.apellido}")
 
+    def listar_reservas_cliente(self, lista_centro_clientes):
+            if self in lista_centro_clientes:
+                for reserva in self.lista_reservas:
+                    print(f"El cliente {self.nombre} {self.apellido} tiene reservada la cancha {reserva.cancha} con fecha de {reserva.fecha}")
+
 class Empleados(Persona):
     def __init__(self, nombre, apellido, desocupado, lista_tareas = []):
         super().__init__(nombre, apellido)
         self.desocupado = desocupado
         self.lista_tareas = lista_tareas
+
+    def __str__(self):
+        return super().__str__() + f"Estado: {self.desocupado}"
 
     def crear_empleado(self, lista_centro_emplpeados):
         lista_centro_emplpeados.append(self)

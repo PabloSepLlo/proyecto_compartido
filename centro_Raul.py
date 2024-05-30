@@ -3,13 +3,14 @@ from personas import Clientes, Empleados
 from reserva import Reserva
 
 class Centro2:
-    def __init__(self, nombre, direccion, lista_clientes=[], lista_canchas=[], lista_empleados=[], lista_reservas=[]):
-        self.nombre = nombre
-        self.direccion = direccion
-        self.lista_clientes = lista_clientes
-        self.lista_canchas = lista_canchas
-        self.lista_empleados = lista_empleados
-        self.lista_reservas = lista_reservas
+    
+    nombre = "Centro deportivo San Miguel"
+    direccion = "Calle del deporte S/N"
+    lista_clientes = []
+    lista_canchas = []
+    lista_empleados = []
+    lista_reservas = []
+    saldo_centro = 0
 
     def añadir_cliente(self):
         nombre = input("Escriba su nombre: ")
@@ -25,7 +26,8 @@ class Centro2:
         num_cancha = int(input("Escriba el número de la cancha: "))
         deporte = input("Escriba el deporte que se practica en la cancha: ")
         precio = float(input("Escriba el precio que cuesta usar la cancha: "))
-        cancha = Cancha(num_cancha, deporte, precio)
+        habilitada = "True"
+        cancha = Cancha(num_cancha, deporte, precio, habilitada)
         cancha.agregar_cancha_a_centro(self.lista_canchas)
         print(f"Cancha {num_cancha} añadida con éxito.")
 
@@ -34,7 +36,7 @@ class Centro2:
             print(f"{indice}: {cancha}")
 
     def eliminar_cancha(self):
-        self.mostrar_cancha()
+        self.mostrar_cancha(self)
         seleccion = int(input("Indique el número (índice) de la cancha que quiere eliminar: "))
         cancha_a_eliminar = self.lista_canchas[seleccion]
         cancha_a_eliminar.quitar_cancha(self.lista_canchas)
@@ -48,7 +50,7 @@ class Centro2:
             print(f"{indice}: {cliente}")
 
     def eliminar_cliente(self):
-        self.mostrar_cliente()
+        self.mostrar_cliente(self)
         seleccion = int(input("Indique el número (índice) del cliente que quiere eliminar: "))
         self.lista_clientes[seleccion].quitar_cliente(self.lista_clientes)
         print(f"Cliente {self.lista_clientes[seleccion].nombre} {self.lista_clientes[seleccion].apellido} eliminado con éxito.")
@@ -59,10 +61,10 @@ class Centro2:
 
     def reservar_cancha(self):
         print("CANCHAS:")
-        self.mostrar_cancha()
+        self.mostrar_cancha(self)
         cancha_seleccionada = int(input("Indique el número (índice) de la cancha que quiere reservar: "))
         print("CLIENTES:")
-        self.mostrar_cliente()
+        self.mostrar_cliente(self)
         cliente_seleccionado = int(input("Indique el número (índice) del cliente que quiere realizar la reserva: "))
         fecha_reserva = input("Indique la fecha de la reserva (DD/MM/AAAA): ")
         
@@ -75,7 +77,7 @@ class Centro2:
         cancha.lista_reservas.append(reserva)
         cliente.lista_reservas.append(reserva)
         
-        if reserva.pagar_cancha(cliente, cancha, self):
+        if reserva.pagar_cancha(cliente, cancha, self.saldo_centro):
             print(f"Reserva realizada con éxito para el cliente {cliente.nombre} {cliente.apellido} en la cancha {cancha.num_cancha} el {fecha_reserva}.")
         else:
             self.lista_reservas.remove(reserva)
@@ -84,10 +86,10 @@ class Centro2:
             print("No se pudo realizar la reserva debido a fondos insuficientes.")
 
     def mostrar_reservas_cliente(self):
-        self.mostrar_cliente()
+        self.mostrar_cliente(self)
         seleccion = int(input("Indique el número (índice) del cliente del que quiere consultar las reservas: "))
         cliente = self.lista_clientes[seleccion]
-        Reserva.listar_reservas_cliente(cliente)
+        cliente.listar_reservas_cliente(self.lista_clientes)
 
     def menu():
         while True:

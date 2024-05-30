@@ -1,6 +1,6 @@
 class Cancha:
     
-    def _init_(self, num_cancha, deporte, precio, habilitada = True, lista_reservas = [], lista_empleados = []):
+    def __init__(self, num_cancha, deporte, precio, habilitada = True, lista_reservas = [], lista_empleados = []):
         self.num_cancha = num_cancha
         self.deporte = deporte
         self.precio = precio
@@ -8,7 +8,7 @@ class Cancha:
         self.lista_reservas = lista_reservas
         self.lista_empleados = lista_empleados
         
-    def _str_(self):
+    def __str__(self):
         return f"Cancha: {self.num_cancha}. Deporte: {self.deporte}. Precio: {self.precio}"
 
     def agregar_cancha_a_centro(self, lista_centro_canchas):
